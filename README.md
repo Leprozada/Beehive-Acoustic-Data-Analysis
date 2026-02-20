@@ -19,6 +19,16 @@ The project integrates two primary data sources:
 
 Audio recordings were processed into structured feature datasets to enable statistical analysis and correlation modelling. 
 
+Data Alignment Note:
+
+Audio recordings from the Zoom recorder did not contain embedded real-world timestamps (files were indexed from 0 to the end of each recording). To align audio derived features with the environmental sensor log, recording start times were reconstructed manually and used to generate real timestamps for the audio timeline. Environmental logs were exported directly from the RuuviTag sensor with timestamps, then merged with acoustic features using time based alignemnt after normalisation.
+
+NaN values -> Interpolation
+
+Missing environemntal readings were handled using time based interpolation after resampling to a consistent time grid, ensuring continuity for correlation and trend analysis.
+
+Features were coputed at fixed time resolution and aligned to the environmental logs after timestamp normalisation.
+
 ## Methodology
 
 The analytical workflow consisted of:
